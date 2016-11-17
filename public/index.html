@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MemoryAllocation</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        ul,ol{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #container{
+            width: 400px;
+            height: 200px;
+            background: #00ff00;
+            margin: 100px auto;
+        }
+        #container li{
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <form action="http://127.0.0.1:3000/parse" method="get">
+            <ul>
+                <li>
+                    <span>选择名称:</span>
+                    <input type="text"></li>
+                <li>
+                    <span>内存大小:</span>
+                    <input type="text">
+                </li>
+            </ul>
+            <input type="submit">
+        </form>
+    </div>
+</body>
+</html>
