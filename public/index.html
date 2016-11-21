@@ -14,32 +14,81 @@
         a{
             text-decoration: none;
         }
-        #container{
-            width: 400px;
-            height: 200px;
-            background: #00ff00;
-            margin: 100px auto;
+        #container #know{
+            width: 350px;
+            height: 300px;
+            background: gray;
+            margin: 5px auto;
         }
-        #container li{
-            display: block;
+        #container form{
+            width: 980px;
+            height: 200px;
+            background: lightgray;
             margin: 10px auto;
+        }
+        #req{
+            margin: 10px auto;
+            width: 400px;
+            height: 50px;
+            padding-top: 10px;
+            /*background: #cccccc;*/
+        }
+        #method{
+            /*padding: 10px;*/
+            margin: 10px auto;
+            width: 400px;
+        }
+        #sub{
+            display: block;
+            margin: 50px auto;
         }
     </style>
 </head>
 <body>
     <div id="container">
-        <form action="http://127.0.0.1:3000/parse" method="get">
-            <ul>
-                <li>
-                    <span>选择名称:</span>
-                    <input type="text"></li>
-                <li>
-                    <span>内存大小:</span>
-                    <input type="text">
-                </li>
-            </ul>
-            <input type="submit">
+        <form action="/parse" method="get">
+            <div id="req">
+                <label for="need">需要分配资源内存:</label>
+                <input type="text" id="need" name="need">
+                <input type="button" onclick="verify()" value="验证">
+            </div>
+            <div id="method">
+                首次:<input type="checkbox" name="ff">
+                循环首次: <input type="checkbox" name="nf">
+                最佳适应: <input type="checkbox" name="bf">
+                最坏适应: <input type="checkbox" name="wf">
+            </div>
+                <input type="submit" id="sub">
         </form>
+        <div id="know">
+            <h1>已知:</h1>
+            <div id="content">
+                <h2>-------------------------------------</h2>
+                <p>-分区号-分区大小(KB)-分区始址(K)-状态-</p>
+                <h2>-------------------------------------</h2><br>
+                <p>----1----------50----------------85----------true(空闲)</p><br>
+                <!--<h2>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</h2>-->
+                <p>----2----------32----------------155--------true(空闲)</p><br>
+                <!--<h2>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</h2>-->
+                <p>----3----------70----------------275--------true(空闲)</p><br>
+                <!--<h2>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</h2>-->
+                <p>----4----------60----------------532--------true(空闲)</p><br>
+                <!--<h2>&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</h2>-->
+                <p>----5----------80----------------650--------true(空闲)</p>
+
+            </div>
+        </div>
     </div>
+<script>
+    function verify(){
+        //放在函数内才可获取到实时的value
+        var oNeed = document.getElementById("need").value;
+        if(oNeed > 80){
+            alert("内存过大,验证失败!");console.log(oNeed);
+        }else{
+            alert("验证成功!");console.log(oNeed);
+        }
+    }
+</script>
 </body>
 </html>
