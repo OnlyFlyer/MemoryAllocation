@@ -83,8 +83,9 @@ var app = express();
     };
     obj5.Sum();
     var arr = [obj,obj1,obj2,obj3,obj4,obj5];
-    var brr = arr;
-    console.log(arr);
+    var brr ;
+    brr = arr.slice(0);
+    //console.log(brr);
 app.use(express.static("./public"));
 app.get("/parse",function(req,res){
     //接收req对象
@@ -123,14 +124,12 @@ app.get("/parse",function(req,res){
                     //delete arr[i];
                     }
                 console.log(arr);
-
-
                 //内存回收
                 console.log("无操作10秒后回收内存");
                 setTimeout(function(){
                     console.log("内存已回收");
                     arr = [obj,obj1,obj2,obj3,obj4,obj5];
-                    arr = brr;
+                    arr = arr.remove();
                     console.log(arr);
                 },10000);
                     return;
